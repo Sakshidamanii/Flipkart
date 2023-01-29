@@ -1,0 +1,23 @@
+class Solution {
+    //Approach
+    //1. count the number of distinct substrings of length k
+        //1.a. for storing distinct substrings, we can use hashset
+    //2. if the count of distinct substring is 2^k, that means String s contains all the binary code
+        //2.a. for this we can check the size of the hashset at the end.
+            //2.a.i. If the size of hashset is 2^k, then return true
+            //2.a.ii. else return false
+    public boolean hasAllCodes(String s, int k) {
+        HashSet<String> set=new HashSet<>();
+        int pow=(int)Math.pow(2,k);
+        for(int i=0;i<s.length()-k+1;i++){
+			set.add(s.substring(i,i+k));
+        }
+        
+        if(set.size()==pow){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
