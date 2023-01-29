@@ -1,0 +1,30 @@
+class Solution {
+    public String customSortString(String order, String s) {
+
+        StringBuilder result=new StringBuilder();;
+        int[] arr=new int[26];
+
+        for(char ch:s.toCharArray()){
+
+            arr[ch-'a']++;
+
+        }
+
+        for(char ch:order.toCharArray()){
+            while(arr[ch-'a']-->0){
+                result.append(ch);
+            }
+        }
+
+        for(int i=0;i<26;i++){
+            while(arr[i]-->0){
+                result.append((char)(i+'a'));
+            }
+        }
+
+        
+
+        return result.toString();
+        
+    }
+}
