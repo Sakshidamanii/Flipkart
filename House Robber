@@ -1,0 +1,24 @@
+public int rob(TreeNode root) {
+		int[] ans = helper(root);
+		//ans[0] means , maximum sum till now if root is selected
+		//ans[1] means , maximum sum till now if root is not selected
+		return Math.max(ans[0], ans[1]);
+	}
+	
+private int[] helper(TreeNode root) 
+{
+  //check if root is null if it is null the simply return array filled with 0
+   if(root == null) return new int[2];
+   //getting array from left
+    int[] left = helper(root.left);
+	//getting array from right
+    int[] right = helper(root.right);
+	
+    int[] ans = new int[2];
+			//0th index with contain maximum sum till now if current root is  choosen
+    ans[0] = root.val+left[1]+right[1];
+			//1st index will hold the maximum sum till now if current root is not choosen
+    ans[1] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+	
+    return ans;
+}
